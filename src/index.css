@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: .7rem;
+}
+
+input:not(:last-child) {
+  height: 2.3rem;
+  margin-bottom: 1rem;
+  width: 200px;
+  padding-inline: 0.5em;
+}
+
+.wrapper{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="submit"]{
+  padding: 0.7em;
+}
+
+.error{
+  font-size: .7rem;
+  color: red;
+}
