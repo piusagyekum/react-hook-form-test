@@ -10,10 +10,12 @@ label {
   display: block;
   margin-bottom: .7rem;
 }
+.form-control{
+  margin-bottom: 1rem;
+}
 
 input:not(:last-child) {
   height: 2.3rem;
-  margin-bottom: 1rem;
   width: 200px;
   padding-inline: 0.5em;
 }
