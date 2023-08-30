@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import { DevTool } from "@hookform/devtools"
+import { useEffect } from "react"
 
 function App() {
   const form = useForm()
@@ -8,7 +9,21 @@ function App() {
   //     email: "example@1234.com",
   //   },
   // }
-  const { register, control, formState, handleSubmit } = form
+  const { register, control, formState, handleSubmit,watch } = form
+
+  useEffect(() => {
+    //watch returns the values of the specified field(s)
+
+    const watchForm = watch((value) => { 
+      console.log(value)
+     })
+  
+    return () => {
+      watchForm.unsubscribe
+    
+    }
+  }, [watch])
+  
 
   const submitFunction = (formData) => {
     console.log(formData)
@@ -132,12 +147,11 @@ function App() {
           />
           <p className="error"></p>
         </div>
+        {/* usefield array only works with object values */}
         <input
           type="submit"
           value="Submit"
-          onClick={() => {
-            console.log(formState)
-          }}
+         
         />
       </form>
       <DevTool control={control} />
