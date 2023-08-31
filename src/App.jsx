@@ -11,7 +11,7 @@ function App() {
     // mode determine when the validation will occur
     // mode:"onBlur"
   }
-  const { register, control, formState, handleSubmit, watch, getValues, m } = form
+  const { register, control, formState, handleSubmit, watch, getValues, } = form
 
   useEffect(() => {
     //watch returns the values of the specified field(s)
