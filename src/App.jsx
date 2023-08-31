@@ -4,12 +4,14 @@ import { useEffect } from "react"
 
 function App() {
   const form = useForm()
-  //   {
-  //   defaultValues: {
-  //     email: "example@1234.com",
-  //   },
-  // }
-  const { register, control, formState, handleSubmit, watch, getValues } = form
+  {
+    //   defaultValues: {
+    //     email: "example@1234.com",
+    //   },
+    // mode determine when the validation will occur
+    // mode:"onBlur"
+  }
+  const { register, control, formState, handleSubmit, watch, getValues, m } = form
 
   useEffect(() => {
     //watch returns the values of the specified field(s)
@@ -136,11 +138,14 @@ function App() {
         <div className="form-control">
           {/* Registering input in array */}
           <label htmlFor="secondary">Secondary Phone Number</label>
+          {/* disabling input */}
           <input
             type="text"
             id="secondary"
             placeholder="Secondary Phone Number"
-            {...register("phoneNumbers[1]")}
+            {...register("phoneNumbers[1]", {
+              disabled: true,
+            })}
             // TypeScript will only allow "phoneNumber.1"
           />
           <p className="error"></p>
@@ -150,11 +155,15 @@ function App() {
       </form>
       <DevTool control={control} />
       {/* getting values in the form */}
-      <button onClick={() => { 
-        console.log(getValues())
-        console.log(getValues("email"))
-        console.log(getValues(["email","socials.snapchat"]))
-       }}>Get Values</button>
+      <button
+        onClick={() => {
+          console.log(getValues())
+          console.log(getValues("email"))
+          console.log(getValues(["email", "socials.snapchat"]))
+        }}
+      >
+        Get Values
+      </button>
     </div>
   )
 }
