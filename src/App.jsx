@@ -9,21 +9,19 @@ function App() {
   //     email: "example@1234.com",
   //   },
   // }
-  const { register, control, formState, handleSubmit,watch } = form
+  const { register, control, formState, handleSubmit, watch, getValues } = form
 
   useEffect(() => {
     //watch returns the values of the specified field(s)
 
-    const watchForm = watch((value) => { 
+    const watchForm = watch((value) => {
       console.log(value)
-     })
-  
+    })
+
     return () => {
       watchForm.unsubscribe
-    
     }
   }, [watch])
-  
 
   const submitFunction = (formData) => {
     console.log(formData)
@@ -148,14 +146,15 @@ function App() {
           <p className="error"></p>
         </div>
         {/* usefield array only works with object values */}
-        <input
-          type="submit"
-          value="Submit"
-         
-        />
+        <input type="submit" value="Submit" />
       </form>
       <DevTool control={control} />
-      <div className=""></div>
+      {/* getting values in the form */}
+      <button onClick={() => { 
+        console.log(getValues())
+        console.log(getValues("email"))
+        console.log(getValues(["email","socials.snapchat"]))
+       }}>Get Values</button>
     </div>
   )
 }
